@@ -108,6 +108,9 @@ function! s:f_debugger.showTerminalBuffer() dict
     setlocal bufhidden=wipe
     let self.terminalBuffer=bufnr('')
     silent file Vebugger:Terminal
+    if exists(':AnsiEsc')
+        AnsiEsc
+    endif
     wincmd p
 endfunction
 
