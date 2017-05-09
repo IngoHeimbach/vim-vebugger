@@ -119,6 +119,9 @@ function! vebugger#std#openShellBuffer(debugger)
     setlocal bufhidden=wipe
     let a:debugger.shellBuffer=bufnr('')
     silent file Vebugger:Shell
+    if exists(':AnsiEsc')
+        AnsiEsc
+    endif
     wincmd p
 endfunction
 
