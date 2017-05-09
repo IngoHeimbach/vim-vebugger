@@ -248,7 +248,7 @@ class Debugger(object):
 
 def prefix_output(output, prefix):
     lines = output.split('\n')
-    lines = [prefix + line for line in lines]
+    lines = [(prefix + line).rstrip() for line in lines]
     prefixed_output = '\n'.join(lines)
     return prefixed_output
 
