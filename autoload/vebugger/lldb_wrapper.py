@@ -247,6 +247,8 @@ class Debugger(object):
 
 
 def prefix_output(output, prefix):
+    if output is None:
+        output = ''
     lines = output.split('\n')
     lines = [(prefix + line).rstrip() for line in lines]
     prefixed_output = '\n'.join(lines)
