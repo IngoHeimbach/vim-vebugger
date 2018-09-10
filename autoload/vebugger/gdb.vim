@@ -127,7 +127,8 @@ function! vebugger#gdb#_readWhere(pipeName,line,readResult,debugger)
 	if 'out'==a:pipeName
 		let l:matches=matchlist(a:line,'\v^\*stopped.*fullname\=\"([^"]+)\",line\=\"(\d+)"')
 		if 2<len(l:matches)
-			let l:file=l:matches[1]
+			let l:file=has('win32') ? substitute(l:matches[1], '\\\\', '\\', 'g') : l:matches[1]
+			let l:file=vebugger#util#WinShellSlash(l:file)
 			let l:file=fnamemodify(l:file,':p')
 			let a:readResult.std.location={
 						\'file':(l:file),
